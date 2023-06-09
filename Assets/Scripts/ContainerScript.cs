@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ContainerScript : MonoBehaviour, IKitchenObejctParent
+public class ContainerScript : MonoBehaviour//, IKitchenObejctParent
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
@@ -8,15 +8,15 @@ public class ContainerScript : MonoBehaviour, IKitchenObejctParent
     private KitchenObject kitchenObject;
 
     public void Interact() {
-        if (kitchenObject == null) {
-            Transform kitchenObjectTransform = Instantiate(
-              kitchenObjectSO.prefab,
-              counterTopPoint);
-            kitchenObjectTransform
-              .GetComponent<KitchenObject>().SetClearCounter(this);
-        } else {
-            Debug.Log(kitchenObject.GetClearCounter());
-        }
+        //if (kitchenObject == null) {
+        //    Transform kitchenObjectTransform = Instantiate(
+        //      kitchenObjectSO.prefab,
+        //      counterTopPoint);
+        //    kitchenObjectTransform
+        //      .GetComponent<KitchenObject>().SetClearCounter(this);
+        //} else {
+        //    Debug.Log(kitchenObject.GetKitchenObjectParent());
+        //}
     }
 
     public Transform GetKitchenObjectFollowTransform() {

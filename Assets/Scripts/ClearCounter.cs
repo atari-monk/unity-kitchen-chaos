@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour, IKitchenObejctParent {
+public class ClearCounter : MonoBehaviour, IKitchenObjectParent {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
     [SerializeField] private ClearCounter secondClearCounter;
@@ -11,20 +11,20 @@ public class ClearCounter : MonoBehaviour, IKitchenObejctParent {
     private void Update() {
         if (testing && Input.GetKeyDown(KeyCode.T)) {
             if (kitchenObject != null) {
-                kitchenObject.SetClearCounter(secondClearCounter);
+                kitchenObject.SetKitchenObjectParent(secondClearCounter);
             }
         }
     }
 
-    public void Interact() {
+    public void Interact(Player player) {
         if (kitchenObject == null) {
             Transform kitchenObjectTransform = Instantiate(
               kitchenObjectSO.prefab,
               counterTopPoint);
             kitchenObjectTransform
-              .GetComponent<KitchenObject>().SetClearCounter(this);
+              .GetComponent<KitchenObject>().SetKitchenObjectParent(this);
         } else {
-            Debug.Log(kitchenObject.GetClearCounter());
+            kitchenObject.SetKitchenObjectParent(player);
         }
     }
 
