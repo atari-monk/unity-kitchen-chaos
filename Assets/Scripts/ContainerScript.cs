@@ -1,20 +1,11 @@
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour, IKitchenObejctParent {
+public class ContainerScript : MonoBehaviour, IKitchenObejctParent
+{
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
-    [SerializeField] private ClearCounter secondClearCounter;
-    [SerializeField] private bool testing;
 
     private KitchenObject kitchenObject;
-
-    private void Update() {
-        if (testing && Input.GetKeyDown(KeyCode.T)) {
-            if (kitchenObject != null) {
-                kitchenObject.SetClearCounter(secondClearCounter);
-            }
-        }
-    }
 
     public void Interact() {
         if (kitchenObject == null) {
